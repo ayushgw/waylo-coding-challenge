@@ -4,58 +4,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-
-const PRODUCTION = process.env.NODE_ENV === 'production';
-const VENDOR_LIBS = ['angular', 'angular-messages', 'angular-ui-router', 'mdi'];
-
 const PLUGINS = [
   new ngAnnotatePlugin({ add: true }),
   new HtmlWebpackPlugin({
     template: 'src/index.html'
   }),
-  new webpack.DefinePlugin ({
-    PRODUCTION: JSON.stringify(PRODUCTION)
-  }),
   new ExtractTextPlugin('style-[contenthash:10].css'),
-  new webpack.optimize.CommonsChunkPlugin({
-    name: ['vendor', 'manifest']
-  })
 ];
-
-// if(PRODUCTION) {
-//   PLUGINS.push(
-//     new ExtractTextPlugin('style-[contenthash:10].css'),
-//     new webpack.optimize.CommonsChunkPlugin({
-//       name: ['vendor', 'manifest']
-//     })
-//   );
-//   console.log("Inside Prod");
-// }
-
-
-// const CSS_IDENTIFIER = PRODUCTION ? '[hash:base64:10]' : '[path][name]---[local]';
-// const CSS_LOADER = PRODUCTION
-// ?   ExtractTextPlugin.extract({
-//   use: ['css-loader', 'postcss-loader']
-// })
-// :   ['style-loader', 'css-loader', 'postcss-loader'];
-//
-//
-// const ENTRY = PRODUCTION
-// ?   { bundle: './src/app.module.js',
-// vendor: VENDOR_LIBS }
-// :   { bundle: './src/app.module.js' };
-//
-//
-// const SOURCE_MAP = PRODUCTION
-// ?   'cheap-module-source-map'
-// :   'cheap-eval-source-map';
-
 
 const config = {
   entry: {
     bundle: './src/app.module.js',
-    vendor: VENDOR_LIBS
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -73,11 +32,14 @@ const config = {
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract([
-          'style-loader',
+          // 'style-loader',
           'css-loader',
-          // 'postcss-loader'
         ]),
         // exclude: /node_modules/,
+      },
+      {
+        test: /\.html$/,
+        use: 'html-loader'
       },
       {
         test: /\.(jpe?g|png|gif)$/,
