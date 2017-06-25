@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "build-material": "material-tools -d ./src/Data/custom/angular-material -m whiteframe sidenav tabs radio-button progress-linear input divider content button --destination-filename custom-angular-material",
     "serve": "webpack-dev-server",
     "build": "NODE_ENV=production rimraf build && webpack -p"
   },
