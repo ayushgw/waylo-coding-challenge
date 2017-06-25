@@ -9,10 +9,8 @@ export default function RunFunction($trace, $transitions) {
       return auth.isAuthenticated()
       .then(function(result) {
          // User is Authenticated
-         console.log(result);
       })
       .catch(function(error) {
-         console.log(error);
          // User isn't Authenticated. Redirect to 'main'
          return trans.router.stateService.target('main');
       });
