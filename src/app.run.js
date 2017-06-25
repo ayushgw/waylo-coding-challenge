@@ -1,4 +1,4 @@
-export default function RunFunction($trace, $transitions) {
+export default function RunFunction($trace, $transitions, $rootScope) {
    "ngInject";
 
    $trace.enable('TRANSITION');

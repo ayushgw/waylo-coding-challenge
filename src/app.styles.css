@@ -9,7 +9,6 @@ html,body {
 #form-wrapper {
   /*margin-top: -3rem;*/
 }
-.md-block {
-  padding: 0;
-  margin: 0;
+#map {
+   height: 500px;
 }

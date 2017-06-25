@@ -2,6 +2,8 @@
    <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-is-locked-open="true" md-whiteframe="4">
       <md-toolbar class="md-theme-indigo">
          <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
+         <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
+         <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
       </md-toolbar>
       <md-content layout-margin>
          <p>This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.</p>
@@ -13,13 +15,20 @@
 
    <md-content flex>
       <div layout="column" layout-fill>
-         <md-toolbar class="">
+         <md-toolbar class="md-accent">
             <h1 class="md-toolbar-tools">Dashboard - Waylo Coding Challenge</h1>
          </md-toolbar>
          <div flex layout="row">
-            <div flex layout="column" layout-padding>Row 1</div>
-            <div flex="25" layout-align="column" md-whiteframe="1" layout-padding>Row 2</div>
+            <div flex layout="column" layout-padding>
+               <div map-lazy-load="https://maps.google.com/maps/api/js"
+               map-lazy-load-params="{{home.googleMapsUrl}}">
+               <ng-map center="africa" zoom="2" id="map">
+                  <!-- <marker position="india" title="hello"></marker> -->
+               </ng-map>
+            </div>
          </div>
+         <div flex="25" layout-align="column" md-whiteframe="1" layout-padding>Row 2</div>
       </div>
-   </md-content>
+   </div>
+</md-content>
 </div>
