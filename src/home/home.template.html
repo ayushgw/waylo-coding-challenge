@@ -24,16 +24,17 @@
          </md-toolbar>
          <div flex layout="row">
             <div flex layout="column" layout-padding>
-               <!-- <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{home.googleMapsUrl}}">
-                  <ng-map center="spain" zoom="2" id="map">
-                     <marker ng-repeat="datapoint in home.datapoints" position="{{datapoint.location}}" title="{{datapoint.name}}"></marker>
-                  </ng-map>
-               </div> -->
                <div id="map"></div>
             </div>
-            <div flex="25" layout-align="column" md-whiteframe="1" layout-padding>
-               <h3>Selected: {{home.selectedDatapoint.name || 'none'}}</h3>
-               <span>{{home.selectedDatapoint}}</span>
+            <div flex="25" layout="column" md-whiteframe="1" layout-padding>
+               <h3>Selected Datapoint: {{home.selectedDatapoint.name || 'None'}}</h3>
+               <div ng-show="home.selectedDatapoint.location">
+                  <div>Location: {{home.selectedDatapoint.location[0]}}</div>
+                  <div>Gender: {{home.selectedDatapoint.gender}}</div>
+                  <div>Locale: {{home.selectedDatapoint.locale}}</div>
+                  <div>Timezone: {{home.selectedDatapoint.timezone}}</div>
+                  <div>Timestamp: {{home.selectedDatapoint.timestamp}}</div>
+               </div>
             </div>
          </div>
       </div>

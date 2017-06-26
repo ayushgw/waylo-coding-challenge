@@ -1,36 +1,15 @@
 import firebase from 'firebase';
 import datapoints from './sample.datapoints.json';
 
-export default function DatabaseService($q) {
+export default function DatabaseService() {
    "ngInject";
 
    var service = this;
    var firebasedatabase = firebase.database();
 
-
-   // DATA POINTS
-   // service.setData = () => {
-   //    firebasedatabase.ref('data').set(datapoints);
-   // };
-   // service.setData();
-
    service.getData = () => {
-      let deferred = $q.defer();
-
-      let getDatapoints = firebasedatabase.ref('data');
-      getDatapoints.on('value', (snapshot) => {
-         let datapoints = snapshot.val();
-         let formattedData = [];
-         angular.forEach(datapoints, (value, key) => {
-            formattedData.push(value);
-         });
-         console.log(formattedData);
-         deferred.resolve(formattedData);
-      });
-
-      return deferred.promise;
+      return firebasedatabase.ref('data');
    };
-
 
    // USER DATA
    service.saveUserDetails = (user, result) => {
