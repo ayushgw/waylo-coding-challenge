@@ -12,3 +12,22 @@ html,body {
 #map {
    height: 500px;
 }
+md-sidenav ul {
+   margin: 0;
+   padding: 0;
+}
+.menu {
+   margin: 0;
+   padding: 0.35rem;
+   border-radius: 0;
+}
+.sidenav-header {
+   max-height: 200px;
+}
+.profilepic {
+   border-radius: 50%;
+   height: 120px;
+}
+.active {
+   background-color: grey;
+}

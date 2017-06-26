@@ -1,34 +1,40 @@
 <div id="home-wrapper" layout="row" layout-fill>
-   <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-is-locked-open="true" md-whiteframe="4">
-      <md-toolbar class="md-theme-indigo">
-         <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
-         <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
-         <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
+   <md-sidenav flex="20" layout="column" class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-is-locked-open="true" md-whiteframe="4" ng-cloak>
+      <md-toolbar flex="noshrink" class="sidenav-header" ng-cloak>
+         <div layout="column" layout-align="center center" layout-padding="20">
+            <img class="profilepic" ng-src="{{home.user.profilepic}}" ng-cloak>
+            <div class="profilename" ng-cloak>{{home.user.name}}</div>
+         </div>
       </md-toolbar>
-      <md-content layout-margin>
-         <p>This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.</p>
-         <md-button ng-click="toggleLeft()" class="md-accent">
-            Close this Sidenav
-         </md-button>
+      <md-content flex="noshrink">
+         <ul ng-init="home.selected = null">
+            <li ng-repeat="datapoint in home.datapoints track by $index" layout="row">
+               <md-button flex class="md-ink-ripple md-button menu" ng-class="{'active': $index == home.selected }" ng-click="home.selected = $index; home.selectDatapoint(datapoint)">{{datapoint.name}}</md-button>
+            </li>
+         </ul>
       </md-content>
    </md-sidenav>
 
    <md-content flex>
       <div layout="column" layout-fill>
-         <md-toolbar class="md-accent">
+         <md-toolbar layout="row" class="md-accent">
             <h1 class="md-toolbar-tools">Dashboard - Waylo Coding Challenge</h1>
+            <div flex></div>
+            <md-button>Logout</md-button>
          </md-toolbar>
          <div flex layout="row">
             <div flex layout="column" layout-padding>
-               <div map-lazy-load="https://maps.google.com/maps/api/js"
-               map-lazy-load-params="{{home.googleMapsUrl}}">
-               <ng-map center="africa" zoom="2" id="map">
-                  <!-- <marker position="india" title="hello"></marker> -->
-               </ng-map>
+               <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="https://maps.googleapis.com/maps/api/js?key=AIzaSyCc53wwPMIa3bfR2bJ2f3FqGVfGvAYZIHs">
+                  <ng-map center="spain" zoom="2" id="map">
+                     <marker position="{{home.datapoints[0].country}}" title="{{home.datapoints[0].name}}"></marker>
+                  </ng-map>
+               </div>
+            </div>
+            <div flex="25" layout-align="column" md-whiteframe="1" layout-padding>
+               <h3>Selected: {{home.selectedDatapoint.name || 'none'}}</h3>
+               <span>{{home.selectedDatapoint}}</span>
             </div>
          </div>
-         <div flex="25" layout-align="column" md-whiteframe="1" layout-padding>Row 2</div>
       </div>
-   </div>
-</md-content>
+   </md-content>
 </div>

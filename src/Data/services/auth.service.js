@@ -6,22 +6,17 @@ var config = {
    authDomain: "waylo-coding-challenge.firebaseapp.com",
    databaseURL: "https://waylo-coding-challenge.firebaseio.com",
    projectId: "waylo-coding-challenge",
-   storageBucket: "",
+   storageBucket: "waylo-coding-challenge.appspot.com",
    messagingSenderId: "358369695785"
 };
 firebase.initializeApp(config);
 
 
-export default function AuthService($q) {
+export default function AuthService(DatabaseService, $q) {
    "ngInject";
-
    var service = this;
-   var firebaseauth = firebase.auth();
 
-   let saveUserDetails = (user, updateObj) => {
-      user.updateProfile(updateObj); // WON'T WORK
-      // TODO: SAVE ADDITIONAL PROPERTIES IN DATABASE USING USER'S UID
-   };
+   var firebaseauth = firebase.auth();
 
    service.isAuthenticated = function() {
       var deferred = $q.defer();
@@ -40,7 +35,12 @@ export default function AuthService($q) {
    service.oauthSignIn = (provider) => {
       let Provider = provider + 'AuthProvider';
       let ProviderObj = new firebase.auth[Provider]();
-      return firebaseauth.signInWithPopup(ProviderObj);
+      let oauth = firebaseauth.signInWithPopup(ProviderObj);
+      oauth.then( (result) => {
+         DatabaseService.saveUserDetails(result.additionalUserInfo.profile, result.user);
+         return result;
+      });
+      return oauth;
    };
 
    service.userLogin = (user) => {
@@ -50,13 +50,9 @@ export default function AuthService($q) {
    service.userSignup = (user) => {
       let signup = firebaseauth.createUserWithEmailAndPassword(user.email, user.password);
       signup.then( (result) => {
-         let updateObj = {
-            name: user.name,
-            gender: user.gender
-         };
-         saveUserDetails(result, updateObj);
+         DatabaseService.saveUserDetails(user, result);
          return result;
-      })
+      });
       return signup;
    };
 

@@ -11,7 +11,6 @@ export default function MainController(AuthService, $state) {
       toggleLoadingFlag();
       let oauthlogin = AuthService.oauthSignIn(provider);
       oauthlogin.then(function(result) {
-         console.log('User Signed In using ' + provider);
          $state.go('home');
       })
       .catch(function(error) {
@@ -23,7 +22,6 @@ export default function MainController(AuthService, $state) {
       toggleLoadingFlag();
       let userlogin = AuthService.userLogin(user)
       userlogin.then(function(result) {
-         console.log(result);
          toggleLoadingFlag();
          $state.go('home');
       })
@@ -37,7 +35,6 @@ export default function MainController(AuthService, $state) {
       toggleLoadingFlag();
       let userSignup = AuthService.userSignup(user)
       userSignup.then(function(result) {
-         console.log(result);
          toggleLoadingFlag();
          $state.go('home');
       })
