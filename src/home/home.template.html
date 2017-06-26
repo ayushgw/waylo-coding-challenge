@@ -20,15 +20,16 @@
          <md-toolbar layout="row" class="md-accent">
             <h1 class="md-toolbar-tools">Dashboard - Waylo Coding Challenge</h1>
             <div flex></div>
-            <md-button>Logout</md-button>
+            <md-button ng-click="home.userSignOut()">Logout</md-button>
          </md-toolbar>
          <div flex layout="row">
             <div flex layout="column" layout-padding>
-               <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="https://maps.googleapis.com/maps/api/js?key=AIzaSyCc53wwPMIa3bfR2bJ2f3FqGVfGvAYZIHs">
+               <!-- <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{home.googleMapsUrl}}">
                   <ng-map center="spain" zoom="2" id="map">
-                     <marker position="{{home.datapoints[0].country}}" title="{{home.datapoints[0].name}}"></marker>
+                     <marker ng-repeat="datapoint in home.datapoints" position="{{datapoint.location}}" title="{{datapoint.name}}"></marker>
                   </ng-map>
-               </div>
+               </div> -->
+               <div id="map"></div>
             </div>
             <div flex="25" layout-align="column" md-whiteframe="1" layout-padding>
                <h3>Selected: {{home.selectedDatapoint.name || 'none'}}</h3>

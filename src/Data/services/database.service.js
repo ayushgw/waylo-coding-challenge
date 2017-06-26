@@ -7,16 +7,32 @@ export default function DatabaseService($q) {
    var service = this;
    var firebasedatabase = firebase.database();
 
-   service.setData = () => {
-      firebasedatabase.ref('datapoints').set(datapoints);
-   };
-   service.setData();
+
+   // DATA POINTS
+   // service.setData = () => {
+   //    firebasedatabase.ref('data').set(datapoints);
+   // };
+   // service.setData();
 
    service.getData = () => {
-      let datapoints = firebasedatabase.ref('datapoints');
-      return datapoints;
+      let deferred = $q.defer();
+
+      let getDatapoints = firebasedatabase.ref('data');
+      getDatapoints.on('value', (snapshot) => {
+         let datapoints = snapshot.val();
+         let formattedData = [];
+         angular.forEach(datapoints, (value, key) => {
+            formattedData.push(value);
+         });
+         console.log(formattedData);
+         deferred.resolve(formattedData);
+      });
+
+      return deferred.promise;
    };
 
+
+   // USER DATA
    service.saveUserDetails = (user, result) => {
       let timestamp = Math.floor(Date.now() / 1000);
       let offset = new Date().getTimezoneOffset();

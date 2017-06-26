@@ -56,4 +56,7 @@ export default function AuthService(DatabaseService, $q) {
       return signup;
    };
 
+   service.userSignOut = () => {
+      firebaseauth.signOut();
+   };
 }

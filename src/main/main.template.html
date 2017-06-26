@@ -2,11 +2,10 @@
    <div ng-show="main.isLoading">
       <md-progress-linear md-mode="indeterminate"></md-progress-linear>
    </div>
-   <div id="main-heading" class="md-display-2 md-margin" layout="row" layout-align="center">
+   <div id="main-heading" class="md-display-2 md-margin" layout="row" layout-align="center" flex="10">
       Waylo Coding Challenge
    </div>
-   <br>
-   <div id="oauth-signin-wrapper" class="md-subhead" layout="row" layout-align="center">
+   <div id="oauth-signin-wrapper" class="md-subhead" layout="row" layout-align="center" flex="20">
       <md-content class="md-padding" flex="35">
          <div layout="row" layout-align="center">
             Sign In Using
@@ -20,7 +19,7 @@
          </div>
       </md-content>
    </div>
-   <div id="form-wrapper" flex layout="row" layout-align="center start" ng-init="main.user">
+   <div id="form-wrapper" layout="row" layout-align="center start" ng-init="main.user" flex>
       <md-content class="md-padding" flex="30" md-whiteframe>
          <md-tabs md-dynamic-height md-border-bottom>
             <md-tab label="Login">
