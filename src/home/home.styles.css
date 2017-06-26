@@ -1,0 +1,52 @@
+@import '../app.styles.css';
+
+#home-wrapper {
+   background-color: var(--color-light-grey);
+}
+#dashboard-heading {
+   color: var(--color-theme);
+}
+#map {
+   height: 26rem;
+}
+md-sidenav {
+   background-color: var(--color-light-grey);
+}
+md-sidenav md-toolbar {
+   background-color: var(--color-light-grey);
+   border-bottom: 1px solid var(--color-theme);
+}
+.sidenav-header {
+   background-color: var(--color-theme) !important;
+   max-height: 200px;
+}
+md-sidenav ul {
+   margin: 0;
+   padding: 0;
+}
+li:hover {
+   background-color: #CFD8DC;
+}
+.menu {
+   margin: 0;
+   padding: 0.35rem;
+   border-radius: 0;
+   color: #302A28;
+}
+.profilepic {
+   border-radius: 50%;
+   height: 120px;
+}
+.active {
+   background-color: #80959E;
+}
+#logout {
+   padding: 5px;
+   background-color: rgba(242, 92, 72, 0.7);
+   line-height: 0px;
+   height: 40px;
+   color: white;
+   font-weight: normal;
+   font-size: 13px;
+   margin: 10px 25px;
+}

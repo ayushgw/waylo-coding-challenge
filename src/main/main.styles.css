@@ -1,0 +1,31 @@
+@import '../app.styles.css';
+
+#main-wrapper {
+   background-color: var(--color-light-grey);
+}
+#main-heading {
+   color: var(--color-theme);
+   text-transform: uppercase;
+   letter-spacing: 5px;
+   font-weight: 500;
+}
+#form-wrapper md-content {
+   background-color: var(--translucent-white);
+   margin-top: -15px;
+}
+#oauth-signin-wrapper md-content {
+   font-size: 14px;
+   font-weight: 500;
+   color: var(--color-dark-grey);
+   background-color: transparent;
+   text-transform: uppercase;
+}
+#oauth-signin-wrapper md-button {
+   color: var(--color-white);
+}
+#fb {
+   background-color: #3B5998;
+}
+#tw {
+   background-color: #31B0D5;
+}

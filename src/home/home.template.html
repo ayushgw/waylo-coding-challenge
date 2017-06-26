@@ -18,12 +18,13 @@
    <md-content flex>
       <div layout="column" layout-fill>
          <md-toolbar layout="row" class="md-accent">
-            <h1 class="md-toolbar-tools">Dashboard - Waylo Coding Challenge</h1>
+            <h1 id="dashboard-heading" class="md-toolbar-tools">DASHBOARD</h1>
             <div flex></div>
-            <md-button ng-click="home.userSignOut()">Logout</md-button>
+            <md-button id="logout" ng-click="home.userSignOut()">Logout</md-button>
          </md-toolbar>
          <div flex layout="row">
-            <div flex layout="column" layout-padding>
+            <div flex layout="column" layout-align="center" layout-padding>
+               <span>Click a marker to view it's location</span>
                <div id="map"></div>
             </div>
             <div flex="25" layout="column" md-whiteframe="1" layout-padding>

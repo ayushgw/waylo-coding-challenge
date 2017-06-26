@@ -6,16 +6,13 @@
       Waylo Coding Challenge
    </div>
    <div id="oauth-signin-wrapper" class="md-subhead" layout="row" layout-align="center" flex="20">
-      <md-content class="md-padding" flex="35">
+      <md-content class="md-padding" flex="30">
          <div layout="row" layout-align="center">
             Sign In Using
          </div>
          <div layout="row">
-            <md-button flex="50" class="md-raised md-primary" ng-click="main.oauthSignIn('Facebook')">Facebook</md-button>
-            <md-button flex="50" class="md-raised md-primary" ng-click="main.oauthSignIn('Twitter')">Twitter</md-button>
-         </div>
-         <div layout="row" layout-align="center">
-            Or
+            <md-button flex="50" id="fb" class="md-raised md-primary" ng-click="main.oauthSignIn('Facebook')">Facebook</md-button>
+            <md-button flex="50" id="tw" class="md-raised md-primary" ng-click="main.oauthSignIn('Twitter')">Twitter</md-button>
          </div>
       </md-content>
    </div>
@@ -56,16 +53,11 @@
                         <input type="password" ng-model="main.user.signup.password" ng-required="true">
                      </md-input-container>
                      <md-input-container md-no-float class="md-block">
-                        <label for="">Confirm Password</label>
-                        <input type="password" ng-model="main.user.signup.confirmPassword" ng-required="true">
-                     </md-input-container>
-                     <md-input-container md-no-float class="md-block">
                         <md-radio-group layout="row" layout-align="space-around" ng-model="main.user.signup.gender">
                            <md-radio-button flex="50" value="Male" class="md-accent">Male</md-radio-button>
                            <md-radio-button flex="50" value="Female" class="md-accent">Female</md-radio-button>
                         </md-radio-group>
                      </md-input-container>
-                     <br>
                      <div layout="row">
                         <md-button flex="100" type="submit" class="md-raised md-primary">Sign Up</md-button>
                      </div>

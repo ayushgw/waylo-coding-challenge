@@ -41,8 +41,7 @@ export default function HomeController(AuthService, DatabaseService, NgMap, $sco
       $location.path('/');
    };
 
-
-   // Marking Data Points
+   // Change/Select Datapoint
    home.selectDatapoint = (datapoint) => {
       home.selectedDatapoint = datapoint;
       home.openInfoWindow(datapoint)
@@ -55,7 +54,8 @@ export default function HomeController(AuthService, DatabaseService, NgMap, $sco
       infowindow.setContent(datapoint.location[0]);
       infowindow.open(map, marker);
    };
-   //
+   
+   // Marking Data Points
    var map, infowindow;
    function markDatapoints (datapoints) {
       map = new google.maps.Map(document.getElementById('map'), {

@@ -1,33 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Slab|Rubik:300,400,500,700,900');
+/******** COLORS **********/
+/**************************/
+:root {
+   --color-light-grey: #D9E2E2;
+   --color-mid-grey: #A3ADAF;
+   --color-dark-grey: #738184;
+   --color-theme: #546E7A;
+   --translucent-white: rgba(255, 255, 255, 0.3);
+}
+/**************************/
+/**************************/
 
-html,body {
-  height: 100vh;
-  /*font-family: 'Rubik', sans-serif;
-  font-family: 'Josefin Slab', serif;*/
-}
-
-#form-wrapper {
-  /*margin-top: -3rem;*/
-}
-#map {
-   height: 500px;
-}
-md-sidenav ul {
-   margin: 0;
-   padding: 0;
-}
-.menu {
-   margin: 0;
-   padding: 0.35rem;
-   border-radius: 0;
-}
-.sidenav-header {
-   max-height: 200px;
-}
-.profilepic {
-   border-radius: 50%;
-   height: 120px;
-}
-.active {
-   background-color: grey;
+html, body {
+   height: 100vh;
 }
