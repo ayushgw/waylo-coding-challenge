@@ -21,7 +21,7 @@
    text-transform: uppercase;
 }
 #oauth-signin-wrapper md-button {
-   color: var(--color-white);
+   color: white;
 }
 #fb {
    background-color: #3B5998;

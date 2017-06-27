@@ -23,18 +23,41 @@
             <md-button id="logout" ng-click="home.userSignOut()">Logout</md-button>
          </md-toolbar>
          <div flex layout="row">
-            <div flex layout="column" layout-align="center" layout-padding>
-               <span>Click a marker to view it's location</span>
+            <div flex layout="column" layout-padding>
+               <div class="note">
+                  <span><u>Note:-</u></span>
+                  <span>1. Click on an entry in the left pane or a marker on the map to view it's info in the right pane.</span>
+                  <span>2. Add new datapoint using form in the bottom right to. Map will be updated real-time.</span>
+                  <span>3. After adding a point, click on it's name in the left pane to locate the point on the world map.</span>
+                  <span>4. Map color varies for datapoints with timezone < 0 and timezone > 0.</span>
+               </div>
                <div id="map"></div>
             </div>
             <div flex="25" layout="column" md-whiteframe="1" layout-padding>
-               <h3>Selected Datapoint: {{home.selectedDatapoint.name || 'None'}}</h3>
-               <div ng-show="home.selectedDatapoint.location">
-                  <div>Location: {{home.selectedDatapoint.location[0]}}</div>
-                  <div>Gender: {{home.selectedDatapoint.gender}}</div>
-                  <div>Locale: {{home.selectedDatapoint.locale}}</div>
-                  <div>Timezone: {{home.selectedDatapoint.timezone}}</div>
-                  <div>Timestamp: {{home.selectedDatapoint.timestamp}}</div>
+               <div flex="33">
+                  <h3>Selected: {{home.selectedDatapoint.name || 'None'}}</h3>
+                  <div ng-show="home.selectedDatapoint.location">
+                     <div>Location: {{home.selectedDatapoint.location[0]}}</div>
+                     <div>Gender: {{home.selectedDatapoint.gender}}</div>
+                     <div>Locale: {{home.selectedDatapoint.locale}}</div>
+                     <div>Timezone: {{home.selectedDatapoint.timezone}}</div>
+                     <div>Timestamp: {{home.selectedDatapoint.timestamp}}</div>
+                  </div>
+               </div>
+               <md-divider></md-divider>
+               <div flex="66" ng-init="newDataPoint">
+                  <h3>Add Datapoint</h3>
+                  <input type="text" ng-model="newDataPoint.name" placeholder="name">
+                  <input type="text" ng-model="newDataPoint.gender" placeholder="gender">
+                  <input type="text" ng-model="newDataPoint.locale" placeholder="locale">
+                  <input type="text" ng-model="newDataPoint.timestamp" placeholder="timestamp">
+                  <input type="text" ng-model="newDataPoint.timezone" placeholder="timezone">
+                  <input type="text" ng-model="newDataPoint.location[0]" placeholder="location">
+                  <input type="text" ng-model="newDataPoint.location[1]" placeholder="latitude (-90 to 90)">
+                  <input type="text" ng-model="newDataPoint.location[2]" placeholder="longitude (-180 to 180)">
+                  <div layout="row" layout-align="center">
+                     <md-button id="submit" ng-click="home.addDataPoint(newDataPoint); newDataPoint=null">Submit</md-button>
+                  </div>
                </div>
             </div>
          </div>

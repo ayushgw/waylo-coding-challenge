@@ -38,4 +38,9 @@ export default function DatabaseService() {
       });
       return getUserDetails;
    };
+
+   service.addDataPoint = (newDataPoint) => {
+      console.log(newDataPoint);
+      let addDataPoint = firebasedatabase.ref('data/' + newDataPoint.name).set(newDataPoint);
+   };
 }

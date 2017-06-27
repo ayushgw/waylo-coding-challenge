@@ -1,4 +1,5 @@
 import avatar from '../Data/images/avatar.png';
+import googlemapstyles from './googlemap.styles';
 
 export default function HomeController(AuthService, DatabaseService, NgMap, $scope, $location, $mdToast) {
    "ngInject";
@@ -11,6 +12,28 @@ export default function HomeController(AuthService, DatabaseService, NgMap, $sco
       home.user = result;
       $scope.$digest();
    });
+
+   // Returns color corresponding to the timezone
+   function getColor(timezone) {
+      switch(true)
+      {
+         case (timezone < 0):
+         return "#86D6CE"
+         break;
+
+         case (timezone > 0):
+         return "#c9c9c9"
+         break;
+      }
+   }
+   // Change Map Color
+   let setMapColor = (formattedData) => {
+      let lastElem = formattedData[formattedData.length - 1];
+      let timezone = lastElem.timezone;
+      let color = getColor(timezone);
+      console.log(color);
+      googlemapstyles[googlemapstyles.length-2].stylers[0].color = color;
+   }
 
    let getData = DatabaseService.getData();
    getData.on('value', (snapshot) => {
@@ -30,7 +53,13 @@ export default function HomeController(AuthService, DatabaseService, NgMap, $sco
             $mdToast.show($mdToast.simple().textContent('A data point has been deleted!'));
          }
          noOfDataPoints = formattedDataLength;
+         // console.log(formattedData);
+         // console.log(formattedDataLength);
+         // let lastElem = formattedData[formattedDataLength - 1];
+         console.log(formattedData);
+         setMapColor(formattedData);
       }
+
       markDatapoints(formattedData);
       home.datapoints = formattedData;
       $scope.$digest();
@@ -54,12 +83,13 @@ export default function HomeController(AuthService, DatabaseService, NgMap, $sco
       infowindow.setContent(datapoint.location[0]);
       infowindow.open(map, marker);
    };
-   
+
    // Marking Data Points
    var map, infowindow;
    function markDatapoints (datapoints) {
       map = new google.maps.Map(document.getElementById('map'), {
          zoom: 2,
+         styles: googlemapstyles,
          center: new google.maps.LatLng(23.88, 45.07),
          mapTypeId: google.maps.MapTypeId.ROADMAP
       });
@@ -85,7 +115,11 @@ export default function HomeController(AuthService, DatabaseService, NgMap, $sco
          })(marker, i));
          counter++;
       });
-
    };
+
+   home.addDataPoint = (newDataPoint) => {
+      let addDataPoint = DatabaseService.addDataPoint(newDataPoint);
+      
+   }
 
 }

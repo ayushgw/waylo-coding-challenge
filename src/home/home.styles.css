@@ -50,3 +50,19 @@ li:hover {
    font-size: 13px;
    margin: 10px 25px;
 }
+h3 {
+   margin: 0;
+   margin-bottom: 10px;
+}
+#home-wrapper input {
+   margin: 5px;
+   padding-left: 5px;
+}
+#submit {
+   background-color: rgb(207,216,220);
+}
+.note span {
+   display: block;
+   font-size: 14px;
+   margin: 2px;
+}
