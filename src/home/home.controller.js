@@ -119,7 +119,6 @@ export default function HomeController(AuthService, DatabaseService, NgMap, $sco
 
    home.addDataPoint = (newDataPoint) => {
       let addDataPoint = DatabaseService.addDataPoint(newDataPoint);
-      
    }
 
 }

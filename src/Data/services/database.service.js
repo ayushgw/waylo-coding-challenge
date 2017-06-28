@@ -43,4 +43,5 @@ export default function DatabaseService() {
       console.log(newDataPoint);
       let addDataPoint = firebasedatabase.ref('data/' + newDataPoint.name).set(newDataPoint);
    };
+   
 }
